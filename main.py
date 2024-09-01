@@ -8,9 +8,12 @@ bot = telebot.TeleBot('7228654217:AAERzZ662cate8coueeC__DFm8Xbg0_CQb8')
 @bot.message_handler(content_types=['photo', ''])  # Command for response about received photos and other files"
 def get_file(message):
     markup = types.InlineKeyboardMarkup()
-    markup.add(types.InlineKeyboardButton('Перейти на сайт', url='https://github.com/Vasiliy-moroshka'))  # inlineKeyBoardButton create a button
-    markup.add(types.InlineKeyboardButton('Удалить фото', callback_data='delete'))
-    markup.add(types.InlineKeyboardButton('Изменить текст', callback_data='edit'))
+    btn1 = types.InlineKeyboardButton('Перейти на сайт', url='https://github.com/Vasiliy-moroshka')  # inlineKeyBoardButton create a button
+    markup.row(btn1)  # .row create a row to arrange the buttons
+    btn2 = types.InlineKeyboardButton('Удалить фото', callback_data='delete')
+    btn3 = types.InlineKeyboardButton('Изменить текст', callback_data='edit')
+    markup.row(btn2, btn3)
+
     bot.reply_to(message, 'Какое красивое фото', reply_markup=markup)
 
 
