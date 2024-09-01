@@ -1,7 +1,11 @@
 import telebot
+import webbrowser
 
 bot = telebot.TeleBot('7228654217:AAERzZ662cate8coueeC__DFm8Xbg0_CQb8')
 
+@bot.message_handler(commands=['site', 'website'])
+def site(message):
+    webbrowser.open('https://github.com/Vasiliy-moroshka/bot_project_br')
 @bot.message_handler(commands=['start', 'hello', 'main'])
 
 def main(message):
