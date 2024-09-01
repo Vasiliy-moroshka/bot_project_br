@@ -1,12 +1,17 @@
 import telebot
 import webbrowser
+from telebot import types
 
 bot = telebot.TeleBot('7228654217:AAERzZ662cate8coueeC__DFm8Xbg0_CQb8')
 
 
 @bot.message_handler(content_types=['photo', ''])  # Command for response about received photos and other files"
 def get_file(message):
-    bot.reply_to(message, 'Какое красивое фото')
+    markup = types.InlineKeyboardMarkup()
+    markup.add(types.InlineKeyboardButton('Перейти на сайт', url='https://github.com/Vasiliy-moroshka'))  # inlineKeyBoardButton create a button
+    markup.add(types.InlineKeyboardButton('Удалить фото', callback_data='delete'))
+    markup.add(types.InlineKeyboardButton('Изменить текст', callback_data='edit'))
+    bot.reply_to(message, 'Какое красивое фото', reply_markup=markup)
 
 
 @bot.message_handler(commands=['site', 'website'])  # command to open a website
